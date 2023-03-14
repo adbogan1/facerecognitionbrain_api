@@ -19,7 +19,7 @@ const db = knex({
       database : 'face-recognition'
     }
 });
-
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 
@@ -38,4 +38,4 @@ app.put('/image', image.handleImage(db))
 
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
-app.listen(3000, () => { console.log('app is working'); })
+app.listen(PORT, () => { console.log('app is working'); })
