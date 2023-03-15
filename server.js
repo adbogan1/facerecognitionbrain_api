@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
@@ -10,18 +11,16 @@ const image = require('./controllers/image');
 const saltRounds = 10;
 const myPlaintextPassword = 's0/\/\P4$$w0rD';
 const someOtherPlaintextPassword = 'not_bacon';
+
+dotenv.config();
+
 const db = knex({
     client: 'pg',
-    connection: {
-      host : '127.0.0.1',
-      user : 'postgres',
-      password : 'And',
-      database : 'face-recognition'
-    }
+    connection: process.env.CONNECTION_STRING
 });
-const PORT = process.env.PORT || 3000;
-const app = express();
 
+const PORT = process.env.PORT || 3005;
+const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -38,4 +37,4 @@ app.put('/image', image.handleImage(db))
 
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) })
 
-app.listen(PORT, () => { console.log('app is working'); })
+app.listen(PORT, () => { console.log(`app is working`); })
