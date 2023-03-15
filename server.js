@@ -13,10 +13,10 @@ const someOtherPlaintextPassword = 'not_bacon';
 const db = knex({
     client: 'pg',
     connection: {
-      host : 'dpg-cg8b09vdvk4ljrhe5k0g-a',
-      user : 'facerecognitionbrain_data_user',
-      password : 'ZjRNZPuhvAmOndsuqjU7a43vTNCqY4Pa',
-      database : 'facerecognitionbrain_data'
+      host : '127.0.0.1',
+      user : 'postgres',
+      password : 'And',
+      database : 'face-recognition'
     }
 });
 const PORT = process.env.PORT || 3000;
